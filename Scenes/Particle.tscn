@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://comgpfjcvpqif"]
+
+[ext_resource type="Script" path="res://Scripts/Particle.gd" id="1_fgwue"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dg1v4"]
+
+[node name="Particle" type="MeshInstance3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_dg1v4")
+skeleton = NodePath("")
+script = ExtResource("1_fgwue")

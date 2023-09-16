@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnpnlqarbinr1"]
+
+[ext_resource type="Script" path="res://Scripts/Rope.gd" id="1_7mhta"]
+[ext_resource type="PackedScene" uid="uid://comgpfjcvpqif" path="res://Scenes/Particle.tscn" id="2_sg3uj"]
+
+[node name="Rope" type="Node3D" node_paths=PackedStringArray("particles")]
+script = ExtResource("1_7mhta")
+particles = [NodePath("Particle"), NodePath("Particle2"), NodePath("Particle3"), NodePath("Particle4"), NodePath("Particle5"), NodePath("Particle6")]
+
+[node name="Particle" parent="." instance=ExtResource("2_sg3uj")]
+
+[node name="Particle2" parent="." instance=ExtResource("2_sg3uj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.323081, 0)
+
+[node name="Particle3" parent="." instance=ExtResource("2_sg3uj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.11075, -0.68881, 0)
+
+[node name="Particle4" parent="." instance=ExtResource("2_sg3uj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.422409, -0.969016, -2.38419e-07)
+
+[node name="Particle5" parent="." instance=ExtResource("2_sg3uj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.803411, -1.03521, 4.76837e-07)
+
+[node name="Particle6" parent="." instance=ExtResource("2_sg3uj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.17086, -0.78588, -2.38419e-07)

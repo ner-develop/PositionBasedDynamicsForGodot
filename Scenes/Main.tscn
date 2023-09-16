@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmy71v58543l2"]
+
+[ext_resource type="Texture2D" uid="uid://cxek4cdmparll" path="res://Textures/kloppenheim_06_puresky_2k.hdr" id="1_2cfl4"]
+[ext_resource type="PackedScene" uid="uid://bnpnlqarbinr1" path="res://Scenes/Rope.tscn" id="2_u4aa6"]
+[ext_resource type="Script" path="res://Scripts/Simulations/PBD.gd" id="4_54cpn"]
+[ext_resource type="Script" path="res://Scripts/Simulations/XPBD.gd" id="4_djh3o"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7qnx6"]
+panorama = ExtResource("1_2cfl4")
+
+[sub_resource type="Sky" id="Sky_t5ct3"]
+sky_material = SubResource("PanoramaSkyMaterial_7qnx6")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_tmx38"]
+background_mode = 2
+sky = SubResource("Sky_t5ct3")
+ambient_light_source = 3
+ambient_light_color = Color(0.992157, 0.992157, 0.992157, 1)
+reflected_light_source = 2
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 2)
+environment = SubResource("Environment_tmx38")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.634326, 0.773066, 0, -0.773066, 0.634326, 0, 0, 0)
+
+[node name="Rope" parent="." instance=ExtResource("2_u4aa6")]
+editor_description = "子ノードにあるPBD or XPBDでシミュレーションを実行します。
+
+Rope自体は共通のViewで、構成要素であるノードでふるまいを変更するようにしてみました。PBD/XPBDで設定するパラメータが異なるのでノードとして分けています。"
+
+[node name="PBD" type="Node" parent="Rope"]
+script = ExtResource("4_54cpn")
+
+[node name="XPBD" type="Node" parent="Rope"]
+script = ExtResource("4_djh3o")
+priority = 1
